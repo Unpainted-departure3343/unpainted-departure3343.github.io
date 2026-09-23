@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MacTV - Control Your TV from Your Mac with Ease</title>
+    <meta name="description" content="MacTV lets you control your TV volume, switch inputs, and navigate menus directly from your Mac using HDMI-CEC. Perfect for Apple Silicon Macs.">
+    <meta name="keywords" content="MacTV, HDMI-CEC, Mac, TV control, Apple Silicon, macOS, SwiftUI, menu bar">
+    <meta name="author" content="Unpainted-departure3343">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="MacTV - Make Your TV Better as a Mac Display">
+    <meta property="og:description" content="Control your TV volume, inputs, and menus from your Mac via HDMI-CEC. Simple, elegant, and built for Apple Silicon.">
+    <meta property="og:url" content="https://github.com/Unpainted-departure3343/MacTV">
+    <meta property="og:type" content="software">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f0f4f8;
+            color: #1a202c;
+            line-height: 1.7;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            padding: 40px 45px;
+        }
+        h1 {
+            font-size: 2.6rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+        .subtitle {
+            font-size: 1.1rem;
+            color: #718096;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-top: 40px;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        p {
+            margin-bottom: 16px;
+            font-size: 1.05rem;
+        }
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 20px;
+        }
+        li {
+            margin-bottom: 8px;
+            font-size: 1.05rem;
+        }
+        .btn-primary {
+            display: inline-block;
+            background-color: #3182ce;
+            color: #ffffff;
+            padding: 16px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(49, 130, 206, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin: 20px 0 30px 0;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(49, 130, 206, 0.4);
+        }
+        .btn-secondary {
+            display: inline-block;
+            background-color: #edf2f7;
+            color: #2d3748;
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: background-color 0.2s, transform 0.2s;
+            margin-top: 10px;
+            border: 1px solid #cbd5e0;
+        }
+        .btn-secondary:hover {
+            background-color: #e2e8f0;
+            transform: translateY(-2px);
+        }
+        .download-section {
+            background: #f7fafc;
+            border-radius: 12px;
+            padding: 30px 35px;
+            margin: 35px 0;
+            border-left: 5px solid #3182ce;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        .feature-item {
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+        }
+        .feature-item span {
+            font-size: 2.2rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .feature-item p {
+            font-size: 0.95rem;
+            margin-bottom: 0;
+            color: #4a5568;
+        }
+        .step-box {
+            background: #edf2f7;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            border-left: 4px solid #3182ce;
+        }
+        .step-box strong {
+            display: block;
+            color: #2d3748;
+            margin-bottom: 5px;
+            font-size: 1.05rem;
+        }
+        .step-box p, .step-box ul {
+            margin-bottom: 5px;
+            font-size: 1rem;
+        }
+        .note {
+            background: #fefcbf;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-left: 4px solid #d69e2e;
+            font-size: 0.95rem;
+        }
+        code {
+            background: #edf2f7;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            font-family: 'SFMono-Regular', Consolas, 'Courier New', monospace;
+        }
+        a {
+            color: #3182ce;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+        a:hover {
+            color: #2b6cb0;
+        }
+        .top-badge {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .top-badge .btn-primary {
+            font-size: 1.4rem;
+            padding: 18px 45px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+        .top-badge .btn-primary:hover {
+            box-shadow: 0 8px 30px rgba(102, 126, 234, 0.5);
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px 20px;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            h2 {
+                font-size: 1.4rem;
+            }
+            .btn-primary {
+                font-size: 1rem;
+                padding: 14px 28px;
+            }
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+            color: #a0aec0;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="top-badge">
+            <h1>📺 MacTV - Your TV, Perfectly Controlled from Mac</h1>
+            <p class="subtitle">Adjust volume, switch inputs, and navigate menus without leaving your Mac</p>
+            <a href="https://github.com/Unpainted-departure3343/MacTV" class="btn-primary">⬇️ Download MacTV Now</a>
+        </div>
+
+        <h2>🎯 What Is MacTV?</h2>
+        <p>MacTV is a beautifully simple macOS app that lives in your menu bar and gives you complete control over your TV when it's connected to your Mac. Instead of fumbling with a separate remote control, MacTV lets you:</p>
+        <ul>
+            <li><strong>Adjust volume</strong> directly from your Mac</li>
+            <li><strong>Switch input sources</strong> (HDMI 1, HDMI 2, etc.) with one click</li>
+            <li><strong>Navigate TV menus</strong> using your Mac's keyboard and trackpad</li>
+            <li><strong>Power your TV on/off</strong> right from your desktop</li>
+        </ul>
+        <p>All of this works through <strong>HDMI-CEC</strong> — a standard feature built into most modern TVs and HDMI cables. No extra hardware needed. No complicated setup. Just plug in your Mac and TV via HDMI, install MacTV, and you're ready to go.</p>
+
+        <h2>✨ Why You'll Love MacTV</h2>
+        <p>If you use your TV as a second monitor or as your primary display for work, movies, or gaming, you know how annoying it is to reach for the TV remote every time you want to change the volume or switch from your Mac to your game console. MacTV solves this completely by putting all those controls on your Mac's menu bar.</p>
+        <div class="feature-grid">
+            <div class="feature-item">
+                <span>🔊</span>
+                <p><strong>Volume Control</strong><br>Use your Mac's volume keys or a slider in the menu bar</p>
+            </div>
+            <div class="feature-item">
+                <span>🔄</span>
+                <p><strong>Input Switching</strong><br>Jump between HDMI sources with a single click</p>
+            </div>
+            <div class="feature-item">
+                <span>🎛️</span>
+                <p><strong>Menu Navigation</strong><br>Control TV settings directly from your Mac</p>
+            </div>
+            <div class="feature-item">
+                <span>⚡</span>
+                <p><strong>Instant Power</strong><br>Turn your TV on or off from your desktop</p>
+            </div>
+        </div>
+        <p>MacTV is built specifically for <strong>Apple Silicon</strong> Macs (M1, M2, M3 and newer), ensuring excellent performance and low battery usage. It's written in SwiftUI, which means it feels native, looks clean, and integrates perfectly with macOS.</p>
+
+        <h2>🖥️ System Requirements</h2>
+        <ul>
+            <li><strong>Mac model:</strong> Any Mac with Apple Silicon (M1 or newer)</li>
+            <li><strong>macOS version:</strong> macOS 13 Ventura or later</li>
+            <li><strong>TV:</strong> Any TV that supports HDMI-CEC (also called Anynet+, Bravia Sync, Simplink, or similar)</li>
+            <li><strong>Cable:</strong> A standard HDMI cable connected between your Mac and TV</li>
+        </ul>
+        <div class="note">
+            💡 <strong>Tip:</strong> Most TVs from Samsung, LG, Sony, TCL, Vizio, and other major brands support HDMI-CEC. Look for "CEC," "HDMI Control," or "Bravia Sync" in your TV's settings and make sure it's enabled.
+        </div>
+
+        <h2>🚀 Getting Started</h2>
+        <p>Getting MacTV running takes less than five minutes. Here's exactly what to do:</p>
+        <div class="step-box">
+            <strong>Step 1: Connect your Mac to your TV</strong>
+            <p>Plug an HDMI cable from your Mac into any HDMI port on your TV. Make sure the TV is turned on and set to the correct input.</p>
+        </div>
+        <div class="step-box">
+            <strong>Step 2: Enable HDMI-CEC on your TV</strong>
+            <p>Using your TV's remote, go to the TV's settings menu and find the HDMI-CEC option. It might be called "Anynet+", "Bravia Sync", "Simplink", "Viera Link", or something similar. Turn it on.</p>
+        </div>
+        <div class="step-box">
+            <strong>Step 3: Download MacTV</strong>
+            <p>Click the download button below to get the latest version of MacTV.</p>
+            <a href="https://github.com/Unpainted-departure3343/MacTV" class="btn-secondary">📥 Visit the download page</a>
+        </div>
+        <div class="step-box">
+            <strong>Step 4: Install MacTV</strong>
+            <p>Visit this link to download the application. Once downloaded, open the file and drag the MacTV icon to your Applications folder. You can also run it directly from the download location.</p>
+        </div>
+        <div class="step-box">
+            <strong>Step 5: Launch and enjoy</strong>
+            <p>Open MacTV from your Applications folder. You'll see a small TV icon appear in your menu bar at the top of your screen. Click it to access all the controls. That's it — you're done!</p>
+        </div>
+
+        <div class="download-section">
+            <h2 style="border: none; margin-top: 0;">📦 Download MacTV</h2>
+            <p style="font-size: 1.1rem;">Ready to make your TV work better with your Mac? Click the button below to get the latest version.</p>
+            <a href="https://github.com/Unpainted-departure3343/MacTV" class="btn-primary" style="background: #48bb78; box-shadow: 0 4px 15px rgba(72, 187, 120, 0.3);">⬇️ Get MacTV Now</a>
+            <p style="font-size: 0.95rem; margin-top: 15px; color: #718096;">The download link takes you to the official MacTV page on GitHub, where you can find the latest release.</p>
+        </div>
+
+        <h2>🔧 Troubleshooting</h2>
+        <p>Most issues are easy to fix. Here are some common problems and solutions:</p>
+        <div class="step-box">
+            <strong>TV not responding to MacTV</strong>
+            <p>Make sure HDMI-CEC is enabled on your TV. Also, try unplugging and replugging the HDMI cable, and restart both your Mac and TV.</p>
+        </div>
+        <div class="step-box">
+            <strong>Volume doesn't work</strong>
+            <p>Some TVs only allow volume control when the TV's speakers are active. If you're using external speakers connected to the TV, volume control via CEC may not work.</p>
+        </div>
+        <div class="step-box">
+            <strong>MacTV doesn't open</strong>
+            <p>Check that you're using macOS 13 or later and that you have an Apple Silicon Mac. If you downloaded the app to your Downloads folder, try right-clicking it and selecting "Open" the first time to bypass macOS security warnings.</p>
+        </div>
+
+        <h2>🛠️ About the Project</h2>
+        <p>MacTV is an open-source project hosted on GitHub. It's actively maintained and free to use. If you're curious about the technical details, the source code is available for developers who want to contribute or learn from it. The app is designed to be lightweight, secure, and respectful of your privacy — it doesn't collect any data or require an internet connection to work.</p>
+        <p>If you encounter any bugs or have feature requests, you can report them on the GitHub issues page. The developer community around MacTV is friendly and responsive, so don't hesitate to reach out.</p>
+
+        <h2>📚 Frequently Asked Questions</h2>
+        <div class="step-box">
+            <strong>Is MacTV free?</strong>
+            <p>Yes! MacTV is completely free to download and use. It's an open-source project.</p>
+        </div>
+        <div class="step-box">
+            <strong>Does it work on Intel Macs?</strong>
+            <p>MacTV is optimized for Apple Silicon (M1, M2, M3, etc.). It may run on Intel Macs with some limitations, but full support is only guaranteed on Apple Silicon models.</p>
+        </div>
+        <div class="step-box">
+            <strong>Do I need any extra hardware?</strong>
+            <p>No. As long as your TV supports HDMI-CEC (most modern TVs do), you just need a standard HDMI cable.</p>
+        </div>
+        <div class="step-box">
+            <strong>Is my TV compatible?</strong>
+            <p>If your TV was made in the last 10 years and has HDMI ports, it almost certainly supports
