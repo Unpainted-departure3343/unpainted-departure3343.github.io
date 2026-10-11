@@ -1,6 +1,6 @@
 ---
 title: "Solar neutrinos between 2 and 5 MeV: where is the data?"
-date: 2026-10-11
+date: 2026-09-11
 summary: "The MSW transition in the solar P_ee(E) falls in an energy range that is awkward for every running detector type."
 tags: [solar-neutrinos, MSW, detectors]
 draft: false

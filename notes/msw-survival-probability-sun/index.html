@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why does P_ee(E) fall from 0.55 to 0.30? The adiabatic MSW formula in one page | Field Notes in Physics</title>
+<meta name="description" content="A short derivation of the adiabatic survival probability, with attention to where the theta13 factors enter.">
+<style>
+:root{--bg:#fbfaf7;--fg:#1d1d1f;--muted:#6b6b72;--accent:#2f5d8a;--line:#e3e0d8;--code:#f1efe9}
+@media (prefers-color-scheme:dark){:root{--bg:#15171a;--fg:#e8e6e1;--muted:#9a9aa3;--accent:#8db6e0;--line:#2c2f34;--code:#1f2227}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:18px/1.7 Georgia,'Times New Roman',serif}
+.wrap{max-width:42rem;margin:0 auto;padding:2rem 1.25rem 4rem}
+nav{display:flex;gap:1.25rem;font:15px/1 system-ui,sans-serif;margin-bottom:3rem;flex-wrap:wrap}
+a{color:var(--accent)}
+nav a{text-decoration:none;color:var(--muted)}nav a:hover{color:var(--accent)}
+h1{font-size:2rem;line-height:1.25;margin:0 0 .4rem}
+h2{font-size:1.35rem;margin:2.2rem 0 .5rem}
+h3{font-size:1.1rem;margin:1.6rem 0 .4rem}
+.meta{font:14px/1.4 system-ui,sans-serif;color:var(--muted);margin-bottom:2rem}
+.tagline{color:var(--muted);margin:0 0 2.5rem}
+.entry{padding:1.1rem 0;border-top:1px solid var(--line)}
+.entry h2{margin:0 0 .2rem;font-size:1.25rem}
+.entry a{text-decoration:none}
+.entry p{margin:.3rem 0 0;color:var(--muted);font-size:16px}
+img{max-width:100%;height:auto}
+figure{margin:1.8rem 0}figcaption{font:14px/1.5 system-ui,sans-serif;color:var(--muted);margin-top:.4rem}
+pre,code{background:var(--code);font:14.5px/1.5 ui-monospace,Menlo,Consolas,monospace}
+code{padding:.1em .3em;border-radius:3px}
+pre{padding:.9rem 1rem;overflow-x:auto;border-radius:4px}pre code{padding:0;background:none}
+table{border-collapse:collapse;margin:1.5rem 0;font:15px/1.5 system-ui,sans-serif;display:block;overflow-x:auto}
+th,td{border-bottom:1px solid var(--line);padding:.4rem .8rem;text-align:left}
+blockquote{margin:1.5rem 0;padding-left:1rem;border-left:3px solid var(--line);color:var(--muted)}
+mjx-container[display=true]{overflow-x:auto;overflow-y:hidden}
+footer{margin-top:4rem;padding-top:1.2rem;border-top:1px solid var(--line);font:14px/1.5 system-ui,sans-serif;color:var(--muted)}
+</style>
+<script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['$$','$$']]}};</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head>
+<body>
+<div class="wrap">
+<nav><a href="/">Dristii Patel</a><a href="/notes/">Notes</a></nav>
+<article><h1>Why does P_ee(E) fall from 0.55 to 0.30? The adiabatic MSW formula in one page</h1><div class='meta'>15 September 2026 &middot; 3 min read &middot; MSW, oscillations, theory</div><p>Context from the <a href="/notes/solar-neutrinos-2-5-mev-gap/">previous post</a>: $P_{ee}$ goes from about 0.55 at low energy to about 0.30 at high energy, with the transition at a few MeV. The standard result for this is compact enough to derive in a few lines, and the derivation also shows what has to hold for it to be valid.</p>
+<h2>Setup</h2>
+<p>In the effective two-flavour (1-2) problem, the matter potential $V_e=\sqrt2\,G_F n_e$ acts on $\nu_e$ only. Defining</p>
+<p>$$\varepsilon \equiv \frac{2 V_e E \cos^2\theta_{13}}{\Delta m^2_{21}},$$</p>
+<p>the matter mixing angle satisfies</p>
+<p>$$\cos2\theta_m = \frac{\cos2\theta_{12}-\varepsilon}{\sqrt{(\cos2\theta_{12}-\varepsilon)^2+\sin^22\theta_{12}}}.$$</p>
+<p>The factor $\cos^2\theta_{13}$ in $\varepsilon$ is the projection of the full charged-current potential onto the 1-2 subspace. It looks like a small correction, but it is important later, in the <a href="/notes/two-bugs-in-one-hamiltonian/">post on a missing $\cos^2\theta_{13}$</a>.</p>
+<p>The resonance sits at $\varepsilon=\cos2\theta_{12}$. A neutrino produced where $\varepsilon\gg1$ starts as almost pure $\nu_{2}^m$.</p>
+<h2>The adiabatic result</h2>
+<p>If the density changes slowly compared to the local oscillation length (the condition is made precise in <a href="/notes/adiabaticity-landau-zener/">the adiabaticity post</a>), the neutrino stays in the matter eigenstate it started in. At the solar surface the matter eigenstates are the vacuum ones, and averaging out the unobservable Sun-Earth phase gives</p>
+<p>$$P_{ee}^{2\nu}=\cos^2\theta_m\cos^2\theta_{12}+\sin^2\theta_m\sin^2\theta_{12}=\tfrac12\left(1+\cos2\theta_m\cos2\theta_{12}\right),$$</p>
+<p>with $\theta_m$ evaluated at the production point. An equivalent form that makes the limits obvious is</p>
+<p>$$P_{ee}^{2\nu}=\sin^2\theta_{12}+\cos2\theta_{12}\,\cos^2\theta_m .$$</p>
+<p>Two limits:</p>
+<ul>
+<li>Vacuum-dominated ($\varepsilon\to0$, $\theta_m\to\theta_{12}$): $P_{ee}^{2\nu}=\tfrac12(1+\cos^22\theta_{12})\approx0.57$.</li>
+<li>Matter-dominated ($\varepsilon\to\infty$, $\cos^2\theta_m\to0$): $P_{ee}^{2\nu}=\sin^2\theta_{12}\approx0.31$.</li>
+</ul>
+<p>Including the third mixing angle gives</p>
+<p>$$P_{ee}=\cos^4\theta_{13}\,P_{ee}^{2\nu}+\sin^4\theta_{13},$$</p>
+<p>which for $\sin^2\theta_{12}=0.31$ and $\sin^2\theta_{13}=0.022$ lands at about 0.55 and 0.30 in the two limits.</p>
+<h2>Where the transition falls</h2>
+<p>With $\Delta m^2_{21}=7.5\times10^{-5}$ eV$^2$ and the electron density at $0.05\,R_\odot$ from the usual exponential profile $n_e\approx 245\,e^{-10.54\,r/R_\odot}$ mol cm$^{-3}$, the condition $\varepsilon=\cos2\theta_{12}$ gives $E\approx1.3$ MeV. The visible rise of $P_{ee}$ toward low energy is the stretch where $\varepsilon$ drops from large values to order one, a few MeV wide.</p>
+<h2>What this formula leaves out</h2>
+<ul>
+<li>A single production radius is assumed. The real production zone is extended (<a href="/notes/where-8b-neutrinos-are-born/">a later post</a>).</li>
+<li>Non-adiabatic transitions are neglected.</li>
+<li>Earth regeneration at night is not included.</li>
+</ul></article>
+<footer>Field Notes in Physics &middot; Dristii Patel</footer>
+</div>
+</body>
+</html>
