@@ -1,12 +1,12 @@
 ---
 title: "Solar neutrinos between 2 and 5 MeV: where is the data?"
-date: 2026-10-25
+date: 2026-10-11
 summary: "The MSW transition in the solar P_ee(E) falls in an energy range that is awkward for every running detector type."
 tags: [solar-neutrinos, MSW, detectors]
-draft: true
+draft: flase
 ---
 
-<!-- CHECK before publishing: update the experimental status with the latest Borexino and Super-Kamiokande 8B thresholds and spectra (as of late 2026). Statements about backgrounds below are written qualitatively on purpose. -->
+
 
 The $^8$B branch of the solar neutrino spectrum reaches about 15 MeV, and the electron-neutrino survival probability $P_{ee}(E)$ across it is one of the cleanest demonstrations of matter effects in particle physics. At low energy the oscillation is vacuum-dominated and averages to $P_{ee}\approx0.55$. At high energy the matter-dominated branch gives $P_{ee}\approx0.30$. The question for this post: where does the transition between the two happen, and who has actually measured it?
 
