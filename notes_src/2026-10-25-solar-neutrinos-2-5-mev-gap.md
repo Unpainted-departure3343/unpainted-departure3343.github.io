@@ -23,7 +23,7 @@ Real-time detectors have a hard time covering this range from either side.
 
 Radiochemical experiments measure integrated rates, so they cannot resolve a spectral shape at all. The result is a region where the shape of $P_{ee}(E)$ is constrained mostly through global fits and extrapolation, not through a clean, event-by-event spectrum.
 
-## Why this matters for new physics
+## Why is that important for the new physics
 
 Sterile-neutrino admixture and non-standard interactions both modify the effective potential or add a level, and both would show up as a distortion in exactly the transition region. A shape measurement there would test the LMA-MSW prediction more directly than the high-energy or low-energy plateaus can.
 
